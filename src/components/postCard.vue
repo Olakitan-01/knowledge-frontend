@@ -20,12 +20,12 @@ const isEditing = ref(false)
 
 const editForm = reactive({
   body: props.post?.body || '',
-  tags: props.post?.tags.join(', ') || ''
+  tags: props.post?.tags?.join(', ') || ''
 })
 
 // In script
 const formattedDate = computed(() => {
-  if (!props.post.createdAt) return ''
+  if (!props.post?.createdAt) return ''
   return new Date(props.post.createdAt).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'short',
@@ -47,8 +47,8 @@ function saveEdit() {
 }
 
 function cancelEdit() {
-  editForm.body = props.post.body
-  editForm.tags = props.post.tags.join(', ')
+  editForm.body = props.post?.body || ''
+  editForm.tags = props.post?.tags?.join(', ') || ''
   isEditing.value = false
 }
 
