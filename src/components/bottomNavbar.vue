@@ -2,7 +2,8 @@
 </script>
 
 <template>
-    <nav class="bg-gray-600 border-t fixed bottom-0 w-full flex justify-around p-3">
+    <nav class="bg-gray-800 border-t fixed bottom-0 w-full flex justify-around items-center py-3 px-2" 
+        style="padding-bottom: env(safe-area-inset-bottom)">
         
         <div class="flex items-center gap-20">
             <router-link to="/">

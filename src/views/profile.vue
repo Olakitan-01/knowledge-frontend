@@ -21,8 +21,8 @@ const editForm = reactive({
 })
 
 // Only show posts belonging to this user
-const userPosts = computed(() => {
-  return postsStore.posts.filter(p => p.userId === userStore.profile.id)
+const userPosts = computed(() => {  
+  return postsStore.posts.filter(p => p.userId === userStore.profile._id)
 })
 
 // When edit button clicked, prefill form with current data
@@ -47,6 +47,7 @@ function cancelEdit() {
 // Fetch profile when page loads
 onMounted(async () => {
   await userStore.fetchProfile()
+  await postsStore.fetchPosts()
 });
 
 </script>
