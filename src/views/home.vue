@@ -24,17 +24,18 @@ onMounted(async () => {
       :post="post"
     />
 
-    <!-- Load more button -->
-    <div v-if="store.hasMore" class="text-center py-4">
+    <!-- Load more — only shows if posts exist AND there are more to load -->
+    <div v-if="store.posts.length >= 10 && store.hasMore" class="text-center py-4">
       <button
         @click="loadMore"
-        class="text-sm text-emerald-600 border border-emerald-600 px-6 py-2 rounded-full hover:bg-emerald-50 transition"
+        class="text-sm text-emerald.600 border border-emerald-600 px-6 py-2 rounded-full hover:bg-emerald-50 transition"
       >
         Load more
       </button>
     </div>
 
-    <div v-else-if="store.posts.length > 0" class="text-center py-4 text-gray-400 text-sm">
+    <!-- All caught up — only shows if posts exist and no more to load -->
+    <div v-else-if="store.posts.length > 0 && !store.hasMore" class="text-center py-4 text-gray-400 text-sm">
       You're all caught up!
     </div>
 

@@ -19,8 +19,8 @@ const isOwner = computed(() => {
 const isEditing = ref(false)
 
 const editForm = reactive({
-  body: props.post.body,
-  tags: props.post.tags.join(', ')
+  body: props.post?.body || '',
+  tags: props.post?.tags.join(', ') || ''
 })
 
 // In script
