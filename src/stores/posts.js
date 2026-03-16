@@ -10,10 +10,10 @@ export const usePostsStore = defineStore('posts', () => {
   const currentPage = ref(1)
 
   async function fetchPosts(page = 1) {
-    const response = await api.get('/posts?page=${page}&limit=15')
+    const response = await api.get(`/posts?page=${page}&limit=15`)
 
     if (page === 1) {
-      post.value = response.data.posts || response.data
+      posts.value = response.data.posts || response.data
     } else {
     posts.value = [...posts.value, ...response.data.posts] || response.data
     }

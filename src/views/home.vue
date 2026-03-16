@@ -5,6 +5,10 @@ import PostCard from '@/components/postCard.vue'
 
 const store = usePostsStore()
 
+async function loadMore() { 
+  await store.loadMore()
+}
+
 onMounted(async () => {
   await store.fetchPosts()
 })

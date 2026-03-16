@@ -116,7 +116,7 @@ function deletePost() {
       </div>
 
       <!-- Tags -->
-      <div v-if="post.tags.length" class="flex flex-wrap gap-2 px-5 pt-2">
+      <div v-if="post.tags?.length" class="flex flex-wrap gap-2 px-5 pt-2">
         <span
           v-for="tag in post.tags"
           :key="tag"
