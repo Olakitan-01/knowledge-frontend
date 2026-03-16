@@ -1,54 +1,32 @@
-// import {defineStore} from 'pinia';
-// import {ref} from 'vue';
-
-
-// export const usePostsStore = defineStore('posts', () => {
-//     const posts = ref([]);
-
-//     let nextId = 1
-
-//     const currentUser = ref({ id: 1, 
-//         name: 'Emmananuel',
-//         username: 'Emman',
-//         bio: 'A software Engineer interestedd in sharing the knowledge gained over the years. Also a Barcerlona fan',
-//         avatar: null,
-//      })
-
-//     function createPost(newPost) {
-//         posts.value.push({id : nextId++,
-//             createdAt : new Date().toLocaleString(),
-//             userId: currentUser.value.id,
-//             username: currentUser.value.name, 
-//             avatar: currentUser.value.avatar,
-//             ...newPost});
-//     }
-
-//     function updatePost(id, updatedPost) {
-//         const index = posts.value.findIndex(post => post.id === id);
-//         if (index !== -1) {
-//             posts.value[index] = {...posts.value[index], ...updatedPost};
-//         };
-//     }
-
-//     function deletePost(id) {
-//         posts.value = posts.value.filter(post => post.id !== id);
-    
-//     }
-
-//     return{ posts, currentUser, createPost, updatePost, deletePost};
-// }); 
-
-import { defineStore } from 'pinia'
-import { ref } from 'vue'
-import api from '../api/axios'
+import { defineStore } from 'pinia';
+import { ref } from 'vue';
+import api from '../api/axios';
 
 export const usePostsStore = defineStore('posts', () => {
   const posts = ref([])
 
-  async function fetchPosts() {
-    const response = await api.get('/posts')
-    posts.value = response.data
+
+  const hasMore = ref(true)
+  const currentPage = ref(1)
+  
+  async function fetchPosts(page = 1) {
+    const response = await api.get('/posts?page=${page}&limit=15')
+
+    if (page === 1) {
+      post.value = response.data.posts
+    } else {
+    posts.value = [...posts.value, ...response.data.posts]
+    }
+
+    hasMore.value = response.data.hasMore
+    currentPage.value = page
   }
+
+  async function loadMore() {
+  if (hasMore.value) {
+    await fetchPosts(currentPage.value + 1)
+  }
+}
 
   async function fetchUserPosts(userId) {
     const response = await api.get(`/posts/user/${userId}`)
@@ -71,5 +49,5 @@ export const usePostsStore = defineStore('posts', () => {
     posts.value = posts.value.filter(p => p._id !== id)
   }
 
-  return { posts, fetchPosts, fetchUserPosts, createPost, updatePost, deletePost }
+  return { posts, hasMore, fetchPosts, fetchUserPosts, loadMore, createPost, updatePost, deletePost }
 })
