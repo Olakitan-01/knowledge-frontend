@@ -7,7 +7,7 @@
   >
     <div class="flex items-center gap-10">
       <router-link to="/">
-        <span class="material-iconstext-3xl">home</span>
+        <span class="material-icons text-3xl">home</span>
       </router-link>
       <router-link to="/">
         <span class="material-icons text-3xl">movie</span>
