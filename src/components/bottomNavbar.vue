@@ -7,19 +7,19 @@
   >
     <div class="flex items-center gap-10">
       <router-link to="/">
-        <span class="material-icons">home</span>
+        <span class="material-iconstext-3xl">home</span>
       </router-link>
       <router-link to="/">
-        <span class="material-icons">movie</span>
+        <span class="material-icons text-3xl">movie</span>
       </router-link>
       <router-link to="/">
-        <span class="material-icons">send</span>
+        <span class="material-icons text-3xl">send</span>
       </router-link>
       <router-link to="/">
-        <span class="material-icons">search</span>
+        <span class="material-icons text-3xl">search</span>
       </router-link>
       <router-link to="/profile">
-        <span class="material-icons">account_circle</span>
+        <span class="material-icons text-3xl">account_circle</span>
       </router-link>
     </div>
   </nav>

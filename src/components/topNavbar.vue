@@ -36,7 +36,7 @@
         </div>
 
         <div class="nav-action nav-action--right">
-            <router-link to="/" class="icon-btn notif-btn" title="Notifications">
+            <router-link to="/notifications" class="icon-btn notif-btn" title="Notifications">
                 <span class="material-icons">notifications</span>
                 <span class="notif-dot"></span>
             </router-link>
