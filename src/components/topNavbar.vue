@@ -1,28 +1,6 @@
 <script>
 </script>
 
-<!-- <template>
-    <nav class="bg-emerald-600 text-white p-4 flex justify-between items-center shadow-md">
-        <div class="flex-1">
-           <router-link to="/">
-                <span class="material-icons">add</span>
-            </router-link>
-        </div>
-
-        <div class="flex-1 text-center">
-            <h1 class="text-white font-bold text-lg">
-                Knowledge
-            </h1>
-        </div>
-
-        <div class="flex-1">
-           <router-link to="/">
-                <span class="material-icons">notifications_unread</span>
-            </router-link>
-        </div>
-    </nav>
-</template> -->
-
 <template>
     <nav class="navbar">
         <div class="nav-action" title="Create Post">
